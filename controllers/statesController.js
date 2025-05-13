@@ -105,8 +105,10 @@ exports.addFunFacts = async (req, res) => {
 
     const stateData = statesData.find(s => s.code === req.code);
     const response = {
+        _id: stateDoc._id,
         stateCode: stateData.code,
-        funfacts: stateDoc.funfacts
+        funfacts: stateDoc.funfacts,
+        __v: stateDoc.__v
     };
     res.json(response);
 };
@@ -141,8 +143,10 @@ exports.updateFunFact = async (req, res) => {
     await stateDoc.save();
 
     const response = {
+        _id: stateDoc._id,
         code: stateData.code,
-        funfacts: stateDoc.funfacts
+        funfacts: stateDoc.funfacts,
+        __v: stateDoc.__v
     };
     res.json(response);
 };
@@ -173,8 +177,11 @@ exports.deleteFunFact = async (req, res) => {
     await stateDoc.save();
 
     const response = {
+        _id: stateDoc._id,
         code: stateData.code,
-        funfacts: stateDoc.funfacts
+        funfacts: stateDoc.funfacts,
+        __v: stateDoc.__v
+
     };
     res.json(response);
 };
