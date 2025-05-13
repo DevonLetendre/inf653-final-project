@@ -1,36 +1,60 @@
-# Node.js REST API for US States data using both Express and MongoDB.
+# Node.js REST API for US States
 
-## Project Overview
-A Node.js REST API for U.S. States data built with Express and MongoDB. The API serves state-related information like capitals, populations, and fun facts stored in MongoDB, while data from a `statesData.json` file is also merged.
+## 📘 Project Overview
+A Node.js REST API for U.S. States data built with **Express** and **MongoDB**.  
+It serves state-related information like capitals, populations, and fun facts stored in MongoDB,  
+combined with core data from a local `statesData.json` file.
 
-## Deployment 🔗 Links
-Deployed on Glitch:  
-- **[HTML Homepage]**(https://peat-shrub-harmonica.glitch.me)
-- **[API URL EXAMPLE]**(https://peat-shrub-harmonica.glitch.me/states/KS/funfact)
+---
 
-## API Endpoints
+## 🔗 Deployment Links
+- **[HTML Homepage](https://peat-shrub-harmonica.glitch.me)**
+- **[API Example - KS Fun Fact](https://peat-shrub-harmonica.glitch.me/states/KS/funfact)**
 
-## GET Requests:                    ## Response
-/states/                            All state data returned
-/states/?contig=true                All state data for contiguous states (Not AK or HI)
-/states/?contig=false               All state data for non-contiguous states (AK, HI)
-/states/:state                      All data for the state URL parameter
-/states/:state/funfact              A random fun fact for the state URL parameter
-/states/:state/capital              { ‘state’: stateName, ‘capital’: capitalName }
-/states/:state/nickname             { ‘state’: stateName, ‘nickname’: nickname }
-/states/:state/population           { ‘state’: stateName, ‘population’: population }
-/states/:state/admission            { ‘state’: stateName, ‘admitted’: admissionDate }
+---
 
-## POST request                     ## Response
-/states/:state/funfact              The result received from MongoDB
+## 📡 API Endpoints
 
-## PATCH Request                    ## Response
-/states/:state/funfact              The result received from MongoDB
+### ✅ GET Requests
+| Endpoint                           | Description                                                         |
+|-----------------------------------|---------------------------------------------------------------------|
+| `/states/`                        | Returns all state data (merged from JSON and MongoDB)              |
+| `/states/?contig=true`           | Returns only contiguous states (excluding AK and HI)               |
+| `/states/?contig=false`          | Returns only non-contiguous states (AK and HI)                     |
+| `/states/:state`                 | Returns all data for the given state code (e.g., `KS`, `NY`)       |
+| `/states/:state/funfact`         | Returns a random fun fact for the state                            |
+| `/states/:state/capital`         | `{ "state": "Kansas", "capital": "Topeka" }`                        |
+| `/states/:state/nickname`        | `{ "state": "Kansas", "nickname": "The Sunflower State" }`         |
+| `/states/:state/population`      | `{ "state": "Kansas", "population": "2,913,000" }`                  |
+| `/states/:state/admission`       | `{ "state": "Kansas", "admitted": "January 29, 1861" }`            |
 
-## DELETE Request                   ## Response
-/states/:state/funfact              The result received from MongoDB
+### ➕ POST Request
+| Endpoint                           | Description                                                         |
+|-----------------------------------|---------------------------------------------------------------------|
+| `/states/:state/funfact`         | Adds one or more fun facts (array) to the given state in MongoDB   |
 
-## Testing
-Use Postman, Thunder Client, or any HTTP client to test the API.
+### 🔄 PATCH Request
+| Endpoint                           | Description                                                         |
+|-----------------------------------|---------------------------------------------------------------------|
+| `/states/:state/funfact`         | Updates a specific fun fact at a given index                       |
 
+### 🗑️ DELETE Request
+| Endpoint                           | Description                                                         |
+|-----------------------------------|---------------------------------------------------------------------|
+| `/states/:state/funfact`         | Deletes a specific fun fact at a given index                       |
 
+---
+
+## 🧪 Testing
+Use [Postman](https://www.postman.com/downloads/), Thunder Client (VS Code extension), or any HTTP client to test endpoints.
+
+---
+
+## 📁 Example POST Body
+```json
+{
+  "funfacts": [
+    "Kansas has more wheat than any other state.",
+    "The state motto is 'To the Stars Through Difficulties'."
+  ]
+}
