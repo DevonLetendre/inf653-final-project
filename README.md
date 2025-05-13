@@ -1,64 +1,37 @@
-# US States Data REST API
+# Node.js REST API for US States data using both Express and MongoDB.
 
 ## Project Overview
 A Node.js REST API for U.S. States data built with Express and MongoDB. The API serves state-related information like capitals, populations, and fun facts stored in MongoDB, while data from a `statesData.json` file is also merged.
 
-## Setup
+## Deployment
+Deployed on Glitch:  
+- **HTML Homepage**: `https://peat-shrub-harmonica.glitch.me`
+- **API URL EXAMPLE**: `https://peat-shrub-harmonica.glitch.me/states/KS/funfact`
 
-### Prerequisites
-- Node.js (v14+)
-- MongoDB (Atlas or local)
-- .env file with MongoDB URI
-
-### Installation
-
-1. Clone the repo:
-
-    ```bash
-    git clone https://github.com/your-username/your-repository.git
-    cd your-repository
-    ```
-
-2. Install dependencies:
-
-    ```bash
-    npm install
-    ```
-
-3. Create a `.env` file with:
-
-    ```
-    DATABASE_URI=your_mongodb_connection_string
-    ```
-
-4. Run locally:
-
-    ```bash
-    npm start
-    ```
-
-5. Open at `http://localhost:3500`.
 
 ## API Endpoints
 
-- **GET /states**: Get all states data.
-- **GET /states/:state**: Get all data for a specific state (by state abbreviation).
-- **GET /states/:state/funfact**: Get a random fun fact for the state.
-- **POST /states/:state/funfact**: Add fun facts to a state.
-- **PATCH /states/:state/funfact**: Update a fun fact for the state.
-- **DELETE /states/:state/funfact**: Remove a fun fact from the state.
+## GET Requests:                    ## Response
+/states/                            All state data returned
+/states/?contig=true                All state data for contiguous states (Not AK or HI)
+/states/?contig=false               All state data for non-contiguous states (AK, HI)
+/states/:state                      All data for the state URL parameter
+/states/:state/funfact              A random fun fact for the state URL parameter
+/states/:state/capital              { ‘state’: stateName, ‘capital’: capitalName }
+/states/:state/nickname             { ‘state’: stateName, ‘nickname’: nickname }
+/states/:state/population           { ‘state’: stateName, ‘population’: population }
+/states/:state/admission            { ‘state’: stateName, ‘admitted’: admissionDate }
 
-## Deployment
-Deployed on Glitch:  
-- **API URL**: `https://your-project-name.glitch.me/states/`
-- **HTML Homepage**: `https://your-project-name.glitch.me/`
+## POST request                     ## Response
+/states/:state/funfact              The result received from MongoDB
+
+## PATCH Request                    ## Response
+/states/:state/funfact              The result received from MongoDB
+
+## DELETE Request                   ## Response
+/states/:state/funfact              The result received from MongoDB
 
 ## Testing
-Use Postman or any HTTP client to test the API.
+Use Postman, Thunder Client, or any HTTP client to test the API.
 
-## GitHub Repository
-[Link to GitHub Repository](https://github.com/your-username/your-repository)
 
----
-
-This version includes all necessary details in a more concise format. Let me know if you'd like further adjustments!
