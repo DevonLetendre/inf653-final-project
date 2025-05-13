@@ -3,11 +3,10 @@
 ## Project Overview
 A Node.js REST API for U.S. States data built with Express and MongoDB. The API serves state-related information like capitals, populations, and fun facts stored in MongoDB, while data from a `statesData.json` file is also merged.
 
-## Deployment
+## Deployment 🔗 Links
 Deployed on Glitch:  
-- **HTML Homepage**: `https://peat-shrub-harmonica.glitch.me`
-- **API URL EXAMPLE**: `https://peat-shrub-harmonica.glitch.me/states/KS/funfact`
-
+- **[HTML Homepage]**(https://peat-shrub-harmonica.glitch.me)
+- **[API URL EXAMPLE]**(https://peat-shrub-harmonica.glitch.me/states/KS/funfact)
 
 ## API Endpoints
 
